@@ -1,28 +1,23 @@
-# AI-Productivity
+# AI Productivity Analysis
 
-This project analyzes how AI usage affects productivity, quality, and profitability in operational workflows. The goal is to 
-identify when AI creates value and when it leads to losses such as increased rework or reduced margins.
+## Team Members
+- Aleks___
+- Hadya Osman
+- Betel Yared
 
-Section 1:Introduction
-******Short explanation of the project project
+## 1. Introduction
 
-Section 2: Methods
-Explain:
--cleaning
--features
--graphs
--models(maybe)
+Artificial intelligence is often seen as a tool that makes work faster and more efficient. In many cases, this is true—tasks can be completed in less time and teams are able to produce more output. However, this raises a more important question: does producing more actually mean creating more value?
 
+This project explores how AI affects not just productivity, but also the quality of work and overall profitability within business operations. Instead of assuming that higher AI usage automatically leads to better results, we take a closer look at what happens behind the scenes. In particular, we examine whether increased reliance on AI introduces hidden costs, such as rework or errors, that may cancel out the benefits of speed.
 
-Section 3: Experimental Design
-Explain:
+Following the project framework, we treat AI not simply as a tool for efficiency, but as something that reshapes the entire workflow. By analyzing how AI interacts with factors like rework, employee experience, and profit, we aim to understand the underlying mechanisms that drive outcomes.
 
--what you tested
--what you compared
--Section 4: Results
--your graphs
--your findings
+Ultimately, the goal of this project is to determine when AI truly adds value, when it starts to create problems, and how businesses can use it more effectively to make better decisions.
 
-Section 5: Conclusion
--summary
--future work
+## 2. Methods
+
+### Approach
+### Features Used
+### Design Choices
+### Environment
