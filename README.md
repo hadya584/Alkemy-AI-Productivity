@@ -73,3 +73,19 @@ Instead of trying to interpret each variable separately, these basically serve t
 We also grouped AI usage into low, ledium, and high levels to make it easier to see if there’s a point where using more AI stops being helpful and starts causing problems, like more rework or lower quality. We can tie this back to our main goal of not just figuring out if AI helps but also understanding when and why it does. 
 
 ## Environment
+This project was developed in a Jupyter Notebook using Python.
+Main tools and libraries used:
+- Python 3.11
+- pandas: data loading, cleaning, and grouping
+- numpy: numerical operations
+- matplotlib: visualizations
+- seaborn: statistical plots and heatmaps
+- scikit-learn: imputation and scaling
+
+The main notebook is:
+`main.ipynb`
+
+The main dataset is:
+`ai_productivity_dataset_final.csv`
+
+
