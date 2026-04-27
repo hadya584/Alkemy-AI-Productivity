@@ -243,7 +243,7 @@ Smoothed line plot: Smoothed Profit Trend vs AI Usage
 After smoothing the data, a clearer pattern appears. Profit generally increases as AI usage rises, especially between 40% and 60% usage, where the trend shows the most consistent growth. There appears to be a noticeable improvement starting around 40–45% AI usage, suggesting this may be a threshold where AI begins to significantly improve productivity. We can also see that below 40% is mostly a decline 
 in profit. However, beyond this range (around 75%+ usage), the growth in profit becomes less stable, with small fluctuations and periods of decline. This supports our theory that while AI can increase output, the benefits are not strictly linear and may level off or introduce trade-offs at higher levels of usage, such as increased rework or hidden costs.
 
-## 2,. Rework Increases with AI Usage
+## 2. Rework Increases with AI Usage
 
 Rework hours increase as AI usage goes from low to high. Tasks with higher AI usage require more corrections, suggesting that while AI speeds up initial work, it may introduce more mistakes that need to be fixed later.
 
