@@ -185,12 +185,13 @@ sq_change = {
 
 -**Method:** We first computed three loss-related metrics:
 
-Rework increase
-Extra (non-billable) hours increase
-Quality decline
+-Rework increase
+-Extra (non-billable) hours increase
+-Quality decline
+```python
 loss_metrics = ['rework_hours', 'extra_hours', 'outcome_score']
 loss_df = df_clean.groupby(['task_type', 'ai_assisted'])[loss_metrics].mean().unstack()
-
+```
 We then calculated relative changes between ai-assisted and non-ai tasks an to ensure comparability, all metrics were normalized using MinMax scaling:
 
 ```python
