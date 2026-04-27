@@ -1,7 +1,7 @@
 # AI PRODUCTIVITY ANALYSIS
 
 ## Team Members
-- Aleks___
+- Aleks Rzesny
 - Hadya Osman
 - Betel Yared
 
@@ -87,5 +87,132 @@ The main notebook is:
 
 The main dataset is:
 `ai_productivity_dataset_final.csv`
+
+# 3. Experimental Design
+
+We designed a set of experiments to see how AI usage affects productivity, quality, and hidden costs. Instead of focusing on just one metric, we looked at factors like rework, time, and quality individually and also combined them to understand overall value and loss. All of the experiments were done in Python using Pandas for data handling and Matplotlib for visualization.
+
+
+## Data Preparation
+
+Before running the experiments, we cleaned and prepared the data to make sure everything was consistent across all metrics. This included:
+
+- Handling missing values
+- Converting categorical variables(like task type and AI usage) into a usable format
+- Creating new variables to capture hidden costs
+
+One key derived metric was **extra (non-billable) hours** which captures hidden labor:
+```python
+df_clean['extra_hours'] = df_clean['hours_spent'] - df_clean['billable_hours']
+```
+We also categorized AI usage into discrete bins to compare behavior across levels:
+```python
+df_clean['ai_bin'] = pd.cut(
+    df_clean['ai_usage_pct'],
+    bins=[0, 0.3, 0.6, 1],
+    labels=['Low', 'Medium', 'High'],
+    include_lowest=True
+)
+```
+## Experiment 1: AI Usage and Profit
+
+- **Purpose:** To see whether using more AI actually leads to higher profit or if increased usage has little or even negative impact.
+  
+- **Method:** We analyzed the relationship between **ai_usage_pct** and **profit** using aggregation and visualization.
+```python
+df_clean.groupby('ai_bin')['profit'].mean().plot(kind='bar')
+```
+- **Baseline:** Tasks with low Ai usage were used as a baseline for comparison to help us understand whether increasing usage improves results relative to minimal usage.
+
+- **Evaluation Metric:** we used **profit** as the main metric since it directly reflects business value which allowed us to determine whether the AI is actually creating value and not just speeding up work.
+
+## Experiment 2: AI Usage vs Rework
+
+- **Purpose:** To test whether higher usage leads to more rework (which could indicate lower quality or more errors).
+
+- **Method:** We grouped the dataset by AI usage bins and computed the mean rework hours:
+```python
+df_clean.groupby('ai_bin')['rework_hours'].mean().plot(kind='bar')
+```
+- **Baseline:** Tasks with low AI usage.
+
+- **Evaluation Metric:**  We used **rework_hours**, since it captures how much additional effort is needed to fix or revise work(important because rework represents any hidden costs).
+
+## Experiment 3: AI Usage vs Quality
+
+- **Purpose:** To evaluate whether AI improves/jarms the quality of outputs.
+
+- **Method:** We computed average outcome scores across AI usage levels:
+
+```python
+df_clean.groupby('ai_bin')['outcome_score'].mean().plot(kind='bar')
+```
+- **Baseline:**  Tasks with little or no AI usage.
+
+- **Evaluation Metric:** We used **outcome_score** (which reflects the quality/success of the completed task) to assess whether higher usage corresponds to better or worse outcomes.
+
+
+## Experiment 4: AI-Assisted vs Non-AI-Assisted Tasks
+
+-**Purpose:** To compare performance between AI-assisted and non-AI-assisted tasks
+
+-**Method:** We grouped tasks based on whetherd theuy were ai-assisted and computed averages:
+
+```python
+sq_metrics = ['hours_spent', 'outcome_score', 'rework_hours']
+sq_df = df_clean.groupby('ai_assisted')[sq_metrics].mean()
+```
+
+We then calculated percentage changes relative to the non-AI baseline:
+
+```python
+sq_change = {
+    'time_change': (sq_df.loc[False, 'hours_spent'] - sq_df.loc[True, 'hours_spent']) / sq_df.loc[False, 'hours_spent'],
+    'quality_change': (sq_df.loc[True, 'outcome_score'] - sq_df.loc[False, 'outcome_score']) / sq_df.loc[False, 'outcome_score'],
+    'rework_change': (sq_df.loc[True, 'rework_hours'] - sq_df.loc[False, 'rework_hours']) / sq_df.loc[False, 'rework_hours']
+}
+```
+
+-**Baseline:** Non-AI-assisted tasks
+
+-**Evaluation Metrics:** **hours_spent**(speed); **outcome_score**(quality), **rework_hours**(correction cost). Through these, we were able to compare ai-assisted tasks to non-ai-assisted tasks which helped focus on time, quality and reowrk.
+
+
+
+## Experiment 5: Combined Loss Index
+
+-**Purpose:** To capture multiple sources of inefficiency in a single metric.
+
+-**Method:** We first computed three loss-related metrics:
+
+Rework increase
+Extra (non-billable) hours increase
+Quality decline
+loss_metrics = ['rework_hours', 'extra_hours', 'outcome_score']
+loss_df = df_clean.groupby(['task_type', 'ai_assisted'])[loss_metrics].mean().unstack()
+
+We then calculated relative changes between ai-assisted and non-ai tasks an to ensure comparability, all metrics were normalized using MinMax scaling:
+
+```python
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+normalized_losses = pd.DataFrame(
+    scaler.fit_transform(losses),
+    index=losses.index,
+    columns=losses.columns
+)
+```
+Finally, we computed a combined loss score using:
+```python
+loss_df['AI_Loss_Index'] = normalized_losses.mean(axis=1)
+```
+-**Baseline:** non-AI-assisted tasks
+
+-**Evaluation Metrics:** **Rework increase**, **Hidden cost**(extra hours) and **Quality decline**, helping us bring together different inefficiencies into one score so they’re easier to understand.
+
+
+
+
 
 
