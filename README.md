@@ -212,6 +212,81 @@ loss_df['AI_Loss_Index'] = normalized_losses.mean(axis=1)
 
 -**Evaluation Metrics:** **Rework increase**, **Hidden cost**(extra hours) and **Quality decline**, helping us bring together different inefficiencies into one score so they’re easier to understand.
 
+## Experiment 6: Profit Stability (Risk Analysis)
+- **Purpose:** To check whether higher AI usage makes profit more stable or more unpredictable.
+- **Method:** We measured the variability of profit across different AI usage levels using standard deviation:
+```python
+profit_risk = df_clean.groupby('ai_bin')['profit'].std()
+profit_risk.plot(kind='bar')
+```
+- **Baseline:** Low AI usage
+- **Evaluation Metric:** profit standard deviation, since it captures how consistent(or risky) outcomes are.
+
+# 4. Results
+From our experiments, we found that increasing AI usage does not simply improve performance. While AI can increase profit and sometimes efficiency, it also introduces trade-offs, 
+especially in terms of rework and hidden costs. Overall, the results show that AI improves output in some areas, but too much reliance on it can reduce quality and increase correction effort.
+
+## 1. AI Usage vs Profit
+
+Profit generally increases as AI usage increases and we can see that the trend becomes clearer when looking at the smoothed profit curve, which shows a steady upward pattern as AI usage rises.
+However, this increase is not perfectly stable and there are fluctuations in profit at different usage levels.
+
+What we can conclude:
+- AI helps improve productivity and output value but gains are not perfectly consistent
+
+Raw line plot: Profit vs AI Usage
+<img width="715" height="547" alt="image" src="https://github.com/user-attachments/assets/c2d35a03-d3f5-4d4a-80f5-613e499276d9" />
+We can see in this figure the relationship between AI usage and profit at the individual task level. The data is highly scattered, meaning profit varies a lot even at the same level of AI usage. While there is no clear pattern in the raw data, this variability suggests that AI does not guarantee consistent outcomes on its own. Some tasks benefit a lot, while others do not, which supports our idea that AI’s impact depends on how it is used rather than just how much it is used.
+
+Smoothed line plot: Smoothed Profit Trend vs AI Usage
+<img width="695" height="547" alt="image" src="https://github.com/user-attachments/assets/708546e3-3cb0-4682-b8c6-d18b0069138f" />
+After smoothing the data, a clearer pattern appears. Profit generally increases as AI usage rises, especially between 40% and 60% usage, where the trend shows the most consistent growth. There appears to be a noticeable improvement starting around 40–45% AI usage, suggesting this may be a threshold where AI begins to significantly improve productivity. We can also see that below 40% is mostly a decline 
+in profit. However, beyond this range (around 75%+ usage), the growth in profit becomes less stable, with small fluctuations and periods of decline. This supports our theory that while AI can increase output, the benefits are not strictly linear and may level off or introduce trade-offs at higher levels of usage, such as increased rework or hidden costs.
+
+## 2,. Rework Increases with AI Usage
+
+Rework hours increase as AI usage goes from low to high. Tasks with higher AI usage require more corrections, suggesting that while AI speeds up initial work, it may introduce more mistakes that need to be fixed later.
+
+So:
+- AI introduces hidden costs through rework
+- Faster output does not always mean better output
+
+
+Bar chart: Rework Hours by AI Usage Level
+<img width="536" height="435" alt="image" src="https://github.com/user-attachments/assets/f940ab01-271a-41f7-9795-5747f28713f0" />
+Explanation:
+
+## 3. Hidden Costs (Extra Hours)
+
+Extra(non-billable) hours are highest at medium AI usage and slightly decrease at high usage but they remain significant overall. This shows that even when AI is used, 
+there is still additional effort that is not captured in billable time.
+
+We can deduce:
+- AI does not eliminate inefficiencies
+- There are hidden labor costs even when productivity seems higher
+
+
+Bar chart: Extra Hours by AI Usage Level
+<img width="523" height="435" alt="image" src="https://github.com/user-attachments/assets/04ccf199-ac67-4ccc-afdb-68b138545d2e" />
+Explanation:
+
+## 4. Quality Slightly Decreases
+
+We can see that the outcome scores slightly decrease as AI usage increases.While the difference isn't huge, there is a consistent drop when moving from low to high AI usage.
+
+We can deduce:
+
+- AI does not strongly improve quality
+- In some cases, it slightly reduces it
+
+
+Bar chart: Outcome Score by AI Usage Level
+<img width="531" height="435" alt="image" src="https://github.com/user-attachments/assets/68796174-b3de-43a8-a27a-119901e92a02" />
+
+Explanation:
+
+
+
 
 
 
