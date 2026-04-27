@@ -272,7 +272,7 @@ Explanation:
 
 ## 4. Quality Slightly Decreases
 
-We can see that the outcome scores slightly decrease as AI usage increases.While the difference isn't huge, there is a consistent drop when moving from low to high AI usage.
+We can see that the outcome scores slightly decrease as AI usage increases. While the difference isn't huge, there is a consistent drop when moving from low to high AI usage.
 
 We can deduce:
 
@@ -284,6 +284,31 @@ Bar chart: Outcome Score by AI Usage Level
 <img width="531" height="435" alt="image" src="https://github.com/user-attachments/assets/68796174-b3de-43a8-a27a-119901e92a02" />
 
 Explanation:
+
+## 5. AI vs Non-AI Comparison
+
+When directly comparing AI-assisted tasks to non-AI tasks, we can see that:
+
+a) AI-assisted tasks take slightly more time
+b) They have slightly lower quality scores
+c) They require more rework
+
+And so we can say that AI is not always faster in practice and that AI-assisted work may require more corrections
+
+
+Bar chart: AI Impact: Speed vs Quality
+<img width="565" height="374" alt="image" src="https://github.com/user-attachments/assets/85f19060-e1f7-410d-aa45-79a8820dcc60" />
+Explanation:
+
+
+**AI vs non-AI Comparison:**
+
+- time_change ≈ negative(AI slower)
+AI-assisted tasks actually take slightly more time on average. This suggests that even if AI speeds up the initial part of the work, users may still spend extra time reviewing, editing, or fixing outputs, which cancels out the time savings.
+- quality_change ≈ negative
+The outcome score is slightly lower for AI-assisted tasks meaning the final results are not necessarily better. This indicates that AI-generated work may not meet the same quality standards without additional human correction.
+- rework_change ≈ positive
+Rework is higher when AI is used  which shows that more effort is needed after the initial task is completed which therefore supports the idea that AI can introduce small errors or inconsistencies that require fixing later.
 
 
 
