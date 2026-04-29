@@ -254,7 +254,7 @@ So:
 
 Bar chart: Rework Hours by AI Usage Level
 <img width="536" height="435" alt="image" src="https://github.com/user-attachments/assets/f940ab01-271a-41f7-9795-5747f28713f0" />
-Explanation:
+In the graph, we can see an upward trend in rework hours as AI usage increases from low to high. Tasks with high AI usage have the highest average rework while low AI usage has the least which confirms that although AI may help complete tasks faster initially, it leads to more corrections afterward. The visual pattern directly supports the idea that AI introduces additional hidden costs in the form of rework.
 
 ## 3. Hidden Costs (Extra Hours)
 
@@ -268,7 +268,7 @@ We can deduce:
 
 Bar chart: Extra Hours by AI Usage Level
 <img width="523" height="435" alt="image" src="https://github.com/user-attachments/assets/04ccf199-ac67-4ccc-afdb-68b138545d2e" />
-Explanation:
+In this graph, extra(non-billable) hours are highest at medium AI usage and then drop a bit at high usage, but they are still higher than at low usage. This means that even when usage is high, there is still extra time being spent that isn’t billed. The graph supports the idea that AI does not remove inefficiencies and that hidden labor costs persist across all usage levels.
 
 ## 4. Quality Slightly Decreases
 
@@ -279,11 +279,9 @@ We can deduce:
 - AI does not strongly improve quality
 - In some cases, it slightly reduces it
 
-
 Bar chart: Outcome Score by AI Usage Level
 <img width="531" height="435" alt="image" src="https://github.com/user-attachments/assets/68796174-b3de-43a8-a27a-119901e92a02" />
-
-Explanation:
+The graph shows a small but consistent decrease in outcome score as AI usage moves from low to high. While the drop is not dramatic, the downward pattern suggests that higher AI usage is associated with slightly lower quality results. This supports the conclusion that AI does not significantly improve quality and may even reduce it slightly(especially when heavily relied on).
 
 ## 5. AI vs Non-AI Comparison
 
