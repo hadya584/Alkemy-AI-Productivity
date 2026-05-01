@@ -252,7 +252,7 @@ profit_risk.plot(kind='bar')
 - **Baseline:** Low AI usage
 - **Evaluation Metric:** profit standard deviation, since it captures how consistent (or risky) outcomes are.
 
-## Experiment 7: Pricing model analysis
+## Experiment 8: Pricing model analysis
 - **Purpose:** Compare effect on pricing model viability when AI integration is introduced
 - **Method:** We analyzed the financial and operative performance metrics (revenue, cost, profit, and revenue per hour) based on the pricing model and whether the task was AI-assisted or not. 
 
